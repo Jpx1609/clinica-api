@@ -34,6 +34,8 @@ O sistema segue o padrão de camadas para garantir a separação de responsabili
 | :--- | :--- | :--- |
 | **GET** | `/pacientes` | Lista todos os pacientes cadastrados. |
 | **POST** | `/pacientes` | Cadastra um novo paciente enviando um JSON no corpo da requisição. |
+| **DELETE** | `/pacientes/{id}` | Deleta um paciente. |
+| **PUT** | `/pacientes/{id}` | Edita um paciente. |
 
 ### Exemplo de JSON para Cadastro (POST):
 ```json
