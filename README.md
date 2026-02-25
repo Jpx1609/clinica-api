@@ -44,3 +44,7 @@ O sistema segue o padrão de camadas para garantir a separação de responsabili
   "cpf": "123.456.789-00",
   "email": "joao@email.com"
 }
+
+## Atualizações
+
+- (24/02/2024): Agora o sistema utiliza banco de dados persistente em arquivo.
