@@ -2,6 +2,7 @@ package com.example.clinicaapi.controllers;
 
 import com.example.clinicaapi.models.Paciente;
 import com.example.clinicaapi.repositories.PacienteRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class PacienteController {
     }
     // ADICIONAR UM PACIENTE
     @PostMapping
-    public Paciente salvar(@RequestBody Paciente paciente) {
+    public Paciente salvar(@Valid @RequestBody Paciente paciente) {
         return repository.save(paciente);
     }
     // DELETAR UM PACIENTE

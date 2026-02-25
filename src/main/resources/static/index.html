@@ -19,6 +19,7 @@
             </div>
             <div class="col-md-3">
                 <input type="text" id="cpf" class="form-control" placeholder="CPF" required>
+                <small id="erroCpf" class="text-danger" style="display: none;"></small>
             </div>
             <div class="col-md-3">
                 <input type="email" id="email" class="form-control" placeholder="E-mail" required>
@@ -68,18 +69,32 @@
 
     document.getElementById("formPaciente").addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        const campoErro = document.getElementById("erroCpf");
+        const inputCpf = document.getElementById("cpf");
+        campoErro.style.display = "none";
+        inputCpf.classList.remove("is-invalid");
+
         const payload = {
             nome: document.getElementById("nome").value,
             cpf: document.getElementById("cpf").value,
             email: document.getElementById("email").value
         };
-        await fetch(API_URL, {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(payload)
         });
-        e.target.reset();
-        listar();
+
+        if (response.ok) {
+            alert("Paciente cadastrado com sucesso!");
+            e.target.reset();
+            listar();
+        } else {
+            campoErro.innerText = "CPF inválido ou já cadastrado.";
+            campoErro.style.display = "block";
+            inputCpf.classList.add("is-invalid");
+        }
     });
 
     async function excluir(id) {
